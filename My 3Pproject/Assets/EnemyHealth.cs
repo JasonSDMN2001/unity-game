@@ -35,6 +35,11 @@ public class EnemyHealth : health
         }
         Destroy(GetComponentInChildren<Canvas>());
         //Destroy(gameObject);
+        Invoke("DestroyEnemy", 100f);
+    }
+    void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
     public override void TakeDamage(float dmg)
     {

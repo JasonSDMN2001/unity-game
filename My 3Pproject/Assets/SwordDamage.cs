@@ -5,9 +5,10 @@ using UnityEngine;
 public class SwordDamage : MonoBehaviour
 {
     [SerializeField] public float damage;
+    
     private void OnTriggerEnter(Collider other)
     {
-        DealDamage(other.gameObject);
+        DealDamage(other.gameObject);         
     }
     public void DealDamage(GameObject other)
     {
