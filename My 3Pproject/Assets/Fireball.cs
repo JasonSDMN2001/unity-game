@@ -8,10 +8,10 @@ public class Fireball : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player")) return;
-        health heAlth = collision.gameObject.GetComponent<health>(); 
-        if (heAlth != null)
+        health health1 = collision.gameObject.GetComponent<health>(); 
+        if (health1 != null)
         {
-            heAlth.TakeDamage(damage);
+            health1.TakeDamage(damage);
         }
     }
 }
