@@ -35,9 +35,10 @@ public class shooter : MonoBehaviour
         {
             RunningAttack();
         }
-        else if (Input.GetMouseButtonDown(0)&&canattack)
+        else if (Input.GetMouseButtonDown(0) && canattack)
         {
-            Attack();
+            System.Random random = new System.Random();
+            Attack(random.Next(0, 7));
         }
         if (Input.GetKey(KeyCode.H))
         {
@@ -52,9 +53,32 @@ public class shooter : MonoBehaviour
 
     }
 
-    void Attack()
+    void Attack(int i)
     {
-        animator.SetTrigger("Attack");
+        switch (i)
+        {
+            case 0:
+                animator.SetTrigger("Attack");
+                break; 
+            case 1:
+                animator.SetTrigger("Attack2");
+                break;
+            case 2:
+                animator.SetTrigger("Attack3");
+                break;
+            case 3:
+                animator.SetTrigger("Attack4");
+                break;
+            case 4:
+                animator.SetTrigger("Attack5");
+                break;  
+            case 5:
+                animator.SetTrigger("Attack6");
+                break;
+            case 6:
+                animator.SetTrigger("Attack7");
+                break;
+        }
         swordcase.SetActive(false);
         sword.SetActive(true);
         SetCooldown2(1.01f);

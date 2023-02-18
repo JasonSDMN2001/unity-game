@@ -42,9 +42,24 @@ public class Enemy : MonoBehaviour
         running = target != null;
         animator.SetBool("Running", running);
     }
-    public void AttackPlayer()
+    public void AttackPlayer(int i)
     {
-        animator.SetTrigger("Attacking");
+
+        switch (i)
+        {
+            case 0:
+                animator.SetTrigger("Attacking");
+                break;
+            case 1:
+                animator.SetTrigger("Attacking2");
+                break;
+            case 2:
+                animator.SetTrigger("Attacking3");
+                break;
+            case 3:
+                animator.SetTrigger("Attacking4");
+                break;
+        }
     }
     public void ActivateDamageDealer()
     {
