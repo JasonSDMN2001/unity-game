@@ -6,11 +6,13 @@ using UnityEngine.Events;
 public class Spawner : MonoBehaviour
 {
     public GameObject enemyprefab;
-    public float enemiesToSpawn = 5;
-    public float activeEnemies = 0;
-    public float totalEnemiesSpawned;
-    public float enemiesAtOnce = 2;
-    public UnityEvent onSpawnerEnd; 
+    [SerializeField] public float enemiesToSpawn = 5;
+    [SerializeField] public float activeEnemies = 0;
+    [SerializeField] public float totalEnemiesSpawned = 0;
+    [SerializeField] public float enemiesAtOnce = 2;
+    public float deadEnemies = 0;
+    public float originRandomOffset = 2;
+    public UnityEvent onSpawnerEnd;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +24,10 @@ public class Spawner : MonoBehaviour
     {
         activeEnemies++;
         totalEnemiesSpawned++;
-        GameObject clone = Instantiate(enemyprefab);
-
-        clone.transform.position = RandomSpawnPosition();
+        GameObject clone = Instantiate(enemyprefab, transform.position + RandomSpawnLocalPosition(), transform.rotation);
+        //clone.transform.position = RandomSpawnPosition();
         EnemyHealth enemyhHealth = clone.GetComponent<EnemyHealth>();
+
         if (enemyhHealth != null)
         {
             enemyhHealth.RegisterSpawner(this);
@@ -35,22 +37,27 @@ public class Spawner : MonoBehaviour
             SpawnEnemy();
         }
     }
+
+    Vector3 RandomSpawnLocalPosition()
+    {
+
+        float x = Random.Range(-originRandomOffset,originRandomOffset);
+        float z = Random.Range(-originRandomOffset,originRandomOffset);
+        return new Vector3(x, 0, z);
+    }
+
     public void NotifyDeath(EnemyHealth enemyHealth)
     {
         activeEnemies--;
-        if (totalEnemiesSpawned <= enemiesToSpawn)
+        deadEnemies++;
+        if (totalEnemiesSpawned < enemiesToSpawn)
         {
             SpawnEnemy();
         }
-        else
+        if (deadEnemies >= enemiesToSpawn)
         {
             onSpawnerEnd.Invoke();
         }
     }
-    Vector3 RandomSpawnPosition()
-    {
-        float x = Random.Range(transform.position.x - 2f, transform.position.x + 2f);
-        float z = Random.Range(transform.position.z - 2f, transform.position.z + 2f);
-        return new Vector3(x, transform.position.y, z);
-    }
 }
+    
