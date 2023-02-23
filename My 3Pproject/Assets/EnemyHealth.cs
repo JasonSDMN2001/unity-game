@@ -9,6 +9,8 @@ public class EnemyHealth : health
     private Spawner myParentSpawner;
     public Slider healthBar;
     public Animator animator;
+    public GameObject[] loots;
+    public float force;
     protected override void Start()
     {
         base.Start();
@@ -24,8 +26,8 @@ public class EnemyHealth : health
         base.Die();
         myParentSpawner.NotifyDeath(this);
         animator.SetTrigger("Death");
-        //Remove logic
         enabled = false;
+        //Remove logic
         GetComponentInParent<Enemy>().enabled = false;
         GetComponentInParent<UnityEngine.AI.NavMeshAgent>().destination = transform.position;
         GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = false;
@@ -36,6 +38,7 @@ public class EnemyHealth : health
         Destroy(GetComponentInChildren<Canvas>());
         //Destroy(gameObject);
         Invoke("DestroyEnemy", 100f);
+        DropLoot();
     }
     void DestroyEnemy()
     {
@@ -50,5 +53,13 @@ public class EnemyHealth : health
     void UpdateUI()
     {
         healthBar.value = currentHealth/totalHealth;
+    }
+    void DropLoot()
+    {
+        foreach(GameObject item in loots)
+        {
+            Instantiate(item,transform.position,transform.rotation);
+            GetComponent<Rigidbody>().AddExplosionForce(force, transform.position, 4f);
+        }
     }
 }

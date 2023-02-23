@@ -293,8 +293,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.33
-  m_Speed: 4
-  m_Acceleration: 8
+  m_Speed: 3
+  m_Acceleration: 7
   avoidancePriority: 50
   m_AngularSpeed: 180
   m_StoppingDistance: 1
@@ -336,6 +336,11 @@ MonoBehaviour:
   alive: 0
   healthBar: {fileID: 4726661827785871721}
   animator: {fileID: 3256453124836765638}
+  loots:
+  - {fileID: 8607945480406250185, guid: 4bad30666423c9f48a575c30c9034609, type: 3}
+  - {fileID: 8607945480406250185, guid: 4bad30666423c9f48a575c30c9034609, type: 3}
+  - {fileID: 6416196579212981306, guid: b29d73d77edc93442ac2d48fd12d3182, type: 3}
+  force: 10
 --- !u!1 &723021402181504871
 GameObject:
   m_ObjectHideFlags: 0

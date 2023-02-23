@@ -55,19 +55,19 @@ public class Enemy : MonoBehaviour
                 break;
             case 1:
                 animator.SetTrigger("Attacking2");
-                animator.ResetTrigger("Attacking1");
+                animator.ResetTrigger("Attacking");
                 animator.ResetTrigger("Attacking3");
                 animator.ResetTrigger("Attacking4");
                 break;
             case 2:
                 animator.SetTrigger("Attacking3");
-                animator.ResetTrigger("Attacking1");
+                animator.ResetTrigger("Attacking");
                 animator.ResetTrigger("Attacking2");
                 animator.ResetTrigger("Attacking4");
                 break;
             case 3:
                 animator.SetTrigger("Attacking4");
-                animator.ResetTrigger("Attacking1");
+                animator.ResetTrigger("Attacking");
                 animator.ResetTrigger("Attacking3");
                 animator.ResetTrigger("Attacking2");
                 break;

@@ -32,7 +32,6 @@ public class PlayerHealth : health
     protected override void Die()
     {
         base.Die();
-        Debug.Log("Game Over");
 
         gameOverScreen.SetActive(true);
         animator.SetTrigger("Death");
