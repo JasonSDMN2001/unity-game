@@ -6,6 +6,7 @@ public class xp : MonoBehaviour
 {
     private Transform target=null;
     [SerializeField] private float speed=5;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +16,17 @@ public class xp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y < -100)
+        {
+            Destroy(gameObject);
+        }
         if (target != null)
         {
 
             transform.position = Vector3.Lerp(transform.position, target.position + Vector3.up, Time.deltaTime*speed);
             if (Vector3.Distance(transform.position, target.position) < 0.2f)
             {
+                
                 Destroy(gameObject);
             }
         }
@@ -31,6 +37,13 @@ public class xp : MonoBehaviour
         {
             target = other.transform;
             GetComponent<MeshCollider>().enabled=false;
+            LevelUp(other.gameObject);
         }
+    }
+    public void LevelUp(GameObject other)
+    {
+        //PlayerXp.GiveXp();
+        PlayerXp playerXp = other.GetComponent<PlayerXp>();
+        playerXp.GiveXp(0.1f);
     }
 }

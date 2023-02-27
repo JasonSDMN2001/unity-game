@@ -58,8 +58,13 @@ public class EnemyHealth : health
     {
         foreach(GameObject item in loots)
         {
-            Instantiate(item,transform.position,transform.rotation);
-            GetComponent<Rigidbody>().AddExplosionForce(force, transform.position, 4f);
+            Quaternion randomRot = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
+            GameObject clone = Instantiate(item,transform.position,randomRot);
+            Vector3 randomExplosionPos = clone.transform.position;
+            randomExplosionPos.x += Random.Range(-0.01f, 0.01f);
+            randomExplosionPos.y += Random.Range(-0.01f, 0.01f);
+            randomExplosionPos.z += Random.Range(-0.01f, 0.01f);
+            clone.GetComponent<Rigidbody>().AddExplosionForce(force, randomExplosionPos, force, 0f, ForceMode.Impulse);
         }
     }
 }
