@@ -8,7 +8,7 @@ public class PlayerXp : MonoBehaviour
     [SerializeField] Slider xpSlider;
     [SerializeField] protected float currentXp;
     [SerializeField] protected float startingXp=0f;
-    [SerializeField] protected float totalXp = 1f;
+    [SerializeField] protected float totalXp;
     [SerializeField] protected GameObject sword;
     [SerializeField] protected float swordDamage;
     [SerializeField] protected GameObject LevelUpScreen;

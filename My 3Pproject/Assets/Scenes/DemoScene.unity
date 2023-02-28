@@ -40630,7 +40630,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 833.37}
+  m_AnchoredPosition: {x: 0, y: 954.53}
   m_SizeDelta: {x: 1215, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328653890
@@ -40654,6 +40654,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Max Level!
+
 
 
 
@@ -63568,7 +63569,7 @@ MonoBehaviour:
   xpSlider: {fileID: 1829244879}
   currentXp: 0
   startingXp: 0
-  totalXp: 0
+  totalXp: 1
   sword: {fileID: 1614688781}
   swordDamage: 50
   LevelUpScreen: {fileID: 590134237}
